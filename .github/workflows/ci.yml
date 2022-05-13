@@ -1,4 +1,4 @@
-name: CI
+﻿name: CI
 
 on:
   push:
@@ -11,6 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     defaults:
       run:
+        # if the below line is missing, windows jobs will succeed ¯\_(ツ)_/¯
         shell: bash
 
     strategy:
@@ -32,5 +33,5 @@ jobs:
         pip install --upgrade pytest
     - name: Test with pytest
       run: |
-        pytest test1.py # this one fails
-        pytest test2.py # this one succeeds
+        pytest test1.py # this one fails - jobs should stop here
+        pytest test2.py # this one succeeds - windows default shell will run this step as well
