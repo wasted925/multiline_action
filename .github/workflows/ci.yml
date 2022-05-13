@@ -27,6 +27,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install --upgrade pytest
     - name: Test with pytest
+      shell: bash
       run: |
-        pytest test1.py
-        pytest test2.py
+        pytest test1.py # this one fails
+        pytest test2.py # this one succeeds
